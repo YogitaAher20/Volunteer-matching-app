@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 # Set page configuration for a premium feel
 st.set_page_config(
-    page_title="NayePankh Volunteer Matching System",
+    page_title="Volunteer Matching System",
     page_icon="🤝",
     layout="centered",
     initial_sidebar_state="collapsed",
@@ -58,8 +58,8 @@ def render_debug_panel(debug_info):
 
 
 # App Title & Description
-st.title("NayePankh Volunteer Matching System")
-st.caption("Empowering youths, transforming lives. Find your perfect role at NayePankh Foundation.")
+st.title("Volunteer Matching System")
+st.caption("Empowering youths, transforming lives. Find your perfect role.")
 
 # Form container
 with st.container():

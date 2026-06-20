@@ -26,7 +26,7 @@ def suggest_activities(role):
             "Compiling monthly visitor engagement analytics"
         ],
         "Content Creator": [
-            "Writing blog posts capturing NayePankh impact stories",
+            "Writing blog posts capturing impact stories",
             "Drafting copy for the monthly supporter newsletter",
             "Writing video scripts for campaigns and reels"
         ],
@@ -41,7 +41,7 @@ def suggest_activities(role):
             "Liaising with school coordinators to explain NGO programs"
         ],
         "Technical Volunteer": [
-            "Optimizing web layout components on NayePankh platforms",
+            "Optimizing web layout components on platforms",
             "Writing python scripts to automate report generation",
             "Debugging database schemas and user management forms"
         ]

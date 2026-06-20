@@ -1,7 +1,7 @@
-# NayePankh Volunteer Matching System
+# Volunteer Matching System
 
 ## Project Overview
-This project helps volunteers find the most suitable role at NayePankh Foundation. The app collects profile details, analyzes them using a simple multi-agent workflow, and suggests a recommended role along with related activities.
+This project helps volunteers find the most suitable role at an Educational Foundation. The app collects profile details, analyzes them using a simple multi-agent workflow, and suggests a recommended role along with related activities.
 
 ## Tech Stack
 - Python
