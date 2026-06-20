@@ -227,7 +227,7 @@ if submit_button:
             for activity in activities:
                 st.write(f"- {activity}")
 
-        render_debug_panel(debug_info)
+        #render_debug_panel(debug_info)
 
         # 4. Save recommendation match results to Supabase (Persistence)
         if supabase_ready:
@@ -245,6 +245,6 @@ if submit_button:
             except Exception as e:
                 debug_info["error"] = str(e)
                 st.warning(f"Could not save profile details to the database. Recommendation generated locally. Details: {e}")
-                render_debug_panel(debug_info)
+                #render_debug_panel(debug_info)
         else:
             st.info("Database saving is skipped because Supabase is not configured.")
