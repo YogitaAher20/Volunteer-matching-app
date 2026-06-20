@@ -15,18 +15,24 @@ def normalize_supabase_url(url):
     return cleaned
 
 # Check and initialize Supabase variables
-supabase_url = normalize_supabase_url(os.getenv("SUPABASE_URL"))
-supabase_key = os.getenv("SUPABASE_KEY", "").strip()
-is_configured = False
 client = None
 
-if supabase_url and supabase_key and supabase_url.startswith("http"):
-    if "your_supabase" not in supabase_url and "your_supabase" not in supabase_key:
-        try:
-            client = create_client(supabase_url, supabase_key)
-            is_configured = True
-        except Exception:
-            is_configured = False
+def get_supabase_client():
+    global client
+
+    if client is not None:
+        return client
+
+    supabase_url = normalize_supabase_url(os.getenv("SUPABASE_URL"))
+    supabase_key = os.getenv("SUPABASE_KEY", "").strip()
+
+    if not supabase_url or not supabase_key:
+        raise ValueError(
+            "Supabase is not configured. Missing SUPABASE_URL or SUPABASE_KEY."
+        )
+
+    client = create_client(supabase_url, supabase_key)
+    return client
 
 def save_volunteer_record(name, email, skills, interests, recommended_role, match_score, reason):
     """
@@ -44,8 +50,7 @@ def save_volunteer_record(name, email, skills, interests, recommended_role, matc
     Returns:
         postgrest.APIResponse: Response object from the Supabase client execution
     """
-    if not is_configured or client is None:
-        raise ValueError("Supabase is not configured. Please supply valid SUPABASE_URL and SUPABASE_KEY in .env.")
+    client = get_supabase_client()
 
     try:
         # Create row object to insert
@@ -76,8 +81,7 @@ def get_volunteer_by_email(email):
     Returns:
         dict or None: The most recent matching record, if found.
     """
-    if not is_configured or client is None:
-        raise ValueError("Supabase is not configured. Please supply valid SUPABASE_URL and SUPABASE_KEY in .env.")
+    client = get_supabase_client()
 
     try:
         normalized_email = email.strip().lower()
